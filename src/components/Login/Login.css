@@ -1,36 +1,24 @@
 
-/* StayHealthy Login Page */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 :root {
-    --primary: #10685f;
-    --primary-dark: #0b514b;
-    --background: #f0f7f6;
-    --text: #243b3a;
-    --muted: #536966;
-    --border: #dce8e5;
-    --white: #ffffff;
-}
-
-body {
-    min-height: 100vh;
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: linear-gradient(135deg, #e9f5f2, #f7faf9);
-    color: var(--text);
+    --login-primary: #10685f;
+    --login-primary-dark: #0b514b;
+    --login-background: #f0f7f6;
+    --login-text: #243b3a;
+    --login-muted: #536966;
+    --login-border: #dce8e5;
+    --login-white: #ffffff;
 }
 
 /* Page layout */
 .login-container {
-    min-height: calc(100vh - var(--nav-height));
+    min-height: calc(100vh - var(--nav-height, 80px));
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 30px 18px;
+    background: linear-gradient(135deg, #e9f5f2, #f7faf9);
+    color: var(--login-text);
+    font-family: "Segoe UI", Arial, sans-serif;
 }
 
 /* Login card */
@@ -38,14 +26,14 @@ body {
     width: 100%;
     max-width: 460px;
     padding: 42px 40px;
-    background: var(--white);
+    background: var(--login-white);
     border: 1px solid rgba(220, 232, 229, 0.8);
     border-radius: 18px;
     box-shadow: 0 15px 45px rgba(30, 85, 76, 0.09);
 }
 
 /* Heading */
-h1 {
+.login-card h1 {
     text-align: center;
     font-size: 32px;
     font-weight: 700;
@@ -56,13 +44,13 @@ h1 {
 .signup-text {
     text-align: center;
     font-size: 14px;
-    color: var(--muted);
+    color: var(--login-muted);
     margin-bottom: 32px;
 }
 
 .demo-note {
     margin: -16px 0 24px;
-    color: var(--muted);
+    color: var(--login-muted);
     text-align: center;
     font-size: 13px;
     line-height: 1.5;
@@ -70,7 +58,7 @@ h1 {
 
 .signup-text a,
 .forgot-password a {
-    color: var(--primary);
+    color: var(--login-primary);
     font-weight: 700;
     text-decoration: none;
 }
@@ -82,16 +70,16 @@ h1 {
 
 .signup-text a:hover,
 .forgot-password a:hover {
-    color: var(--primary-dark);
+    color: var(--login-primary-dark);
     text-decoration: underline;
 }
 
 /* Form fields */
-.form-group {
+.login-card .form-group {
     margin-bottom: 22px;
 }
 
-.form-group label {
+.login-card .form-group label {
     display: block;
     font-size: 14px;
     font-weight: 600;
@@ -99,32 +87,68 @@ h1 {
     color: #354b49;
 }
 
-.form-group input {
+.login-card .form-group input {
     width: 100%;
     height: 49px;
     padding: 0 15px;
-    border: 1px solid var(--border);
+    border: 1px solid var(--login-border);
     border-radius: 9px;
     background: #fbfdfd;
-    color: var(--text);
+    color: var(--login-text);
     font-family: inherit;
     font-size: 14px;
     outline: none;
     transition: all 0.25s ease;
 }
 
-.form-group input::placeholder {
-    color: #536966;
+.login-card .form-group input::placeholder {
+    color: var(--login-muted);
 }
 
-.form-group input:hover {
+.login-card .form-group input:hover {
     border-color: #a8cbc4;
 }
 
-.form-group input:focus {
-    border-color: var(--primary);
-    background: var(--white);
+.login-card .form-group input:focus {
+    border-color: var(--login-primary);
+    background: var(--login-white);
     box-shadow: 0 0 0 4px rgba(22, 132, 119, 0.10);
+}
+
+/* Password visibility */
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.password-wrapper input {
+    padding-right: 55px !important;
+}
+
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 14px;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: var(--login-muted);
+    padding: 5px;
+    line-height: 1;
+}
+
+.toggle-password:hover {
+    color: var(--login-primary);
+}
+
+.toggle-password:focus-visible {
+    outline: 2px solid #005a50;
+    outline-offset: 2px;
+    border-radius: 4px;
 }
 
 /* Buttons */
@@ -144,12 +168,12 @@ h1 {
 
 .login-btn {
     background: #5006db;
-    color: var(--white);
+    color: var(--login-white);
     box-shadow: 0 5px 12px rgba(22, 132, 119, 0.17);
 }
 
 .login-btn:hover {
-    background: var(--primary-dark);
+    background: var(--login-primary-dark);
     transform: translateY(-2px);
     box-shadow: 0 8px 16px rgba(22, 132, 119, 0.2);
 }
@@ -157,12 +181,12 @@ h1 {
 .reset-btn {
     margin-top: 12px;
     background: #edf4f2;
-    color: #536966;
+    color: var(--login-muted);
 }
 
 .reset-btn:hover {
     background: #dfece8;
-    color: var(--text);
+    color: var(--login-text);
 }
 
 .login-btn:active,
@@ -182,32 +206,32 @@ h1 {
 }
 
 /* Feedback message */
-#message {
+.login-card #login-message {
     margin-top: 20px;
     text-align: center;
     font-size: 13px;
     line-height: 1.6;
 }
 
-#message.success,
-#message.error {
+.login-card #login-message.success,
+.login-card #login-message.error {
     padding: 12px;
     border-radius: 8px;
 }
 
-#message.success {
+.login-card #login-message.success {
     color: #126b4e;
     background: #e9f7ef;
 }
 
-#message.error {
+.login-card #login-message.error {
     color: #b42318;
     background: #fff0ee;
 }
 
 /* Accessibility */
-button:focus-visible,
-a:focus-visible {
+.login-card button:focus-visible,
+.login-card a:focus-visible {
     outline: 3px solid #005a50;
     outline-offset: 3px;
 }
@@ -223,43 +247,7 @@ a:focus-visible {
         border-radius: 14px;
     }
 
-    h1 {
+    .login-card h1 {
         font-size: 28px;
     }
-}
-
-
-
-/* Password visibility */
-.password-wrapper {
-    position: relative;
-    width: 100%;
-}
-
-.password-wrapper input {
-    padding-right: 55px;
-}
-
-.toggle-password {
-    position: absolute;
-    top: 50%;
-    right: 14px;
-    transform: translateY(-50%);
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    font-size: 19px;
-    color: #536966;
-    padding: 5px;
-    line-height: 1;
-}
-
-.toggle-password:hover {
-    color: var(--primary);
-}
-
-.toggle-password:focus-visible {
-    outline: 2px solid #005a50;
-    outline-offset: 2px;
-    border-radius: 4px;
 }
